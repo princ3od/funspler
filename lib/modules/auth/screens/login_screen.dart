@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:funspler/general/constants/app_constant.dart';
 import 'package:funspler/general/constants/asset_constant.dart';
+import 'package:funspler/general/core/routes/routes.dart';
 import 'package:funspler/general/theme/widget_theme.dart';
 import 'package:funspler/general/widgets/black_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -62,7 +63,9 @@ class LoginScreen extends StatelessWidget {
                   width: double.infinity,
                   child: BlackButton(
                     text: AppLocalizations.of(context)!.login.toUpperCase(),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.home);
+                    },
                   ),
                 )
               ],

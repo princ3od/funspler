@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:funspler/modules/auth/screens/login_screen.dart';
 import 'package:funspler/modules/auth/screens/register_screen.dart';
 import 'package:funspler/modules/auth/screens/welcome_screen.dart';
+import 'package:funspler/modules/home/screens/home_screen.dart';
 
 class Routes {
   static const String welcome = '/welcome';
@@ -12,5 +13,6 @@ class Routes {
     Routes.welcome: (context) => WelcomeScreen(),
     Routes.login: (context) => LoginScreen(),
     Routes.register: (context) => RegisterScreen(),
+    Routes.home: (context) => HomeScreen(),
   };
 }
