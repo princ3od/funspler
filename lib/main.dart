@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:funspler/general/core/routes/routes.dart';
+import 'package:funspler/general/theme/theme_provider.dart';
 import 'package:funspler/modules/auth/screens/welcome_screen.dart';
-import 'package:funspler/modules/home/screens/home_screen.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'general/constants/app_constant.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,9 +23,21 @@ class MyApp extends StatelessWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       routes: Routes.appRoutes,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        textTheme: TextTheme(
+          headline1: GoogleFonts.comfortaa(
+              fontSize: AppConstant.kDouble_48, color: Colors.black),
+          headline2: GoogleFonts.comfortaa(
+              fontSize: AppConstant.kDouble_36, color: Colors.black),
+          headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+          bodyText1: GoogleFonts.roboto(
+              fontSize: AppConstant.kDouble_15, color: Colors.black),
+          bodyText2: GoogleFonts.roboto(
+              fontSize: AppConstant.kDouble_13, color: Colors.black),
+        ),
       ),
-      home: WelcomeScreen(),
+      home: ChangeNotifierProvider(
+          create: (context) => ThemeProvider(isLightTheme: true),
+          child: WelcomeScreen()),
     );
   }
 }

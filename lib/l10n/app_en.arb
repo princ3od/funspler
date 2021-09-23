@@ -1,4 +1,13 @@
 {
     "login": "Log in",
-    "register": "Register"
+    "register": "Register",
+    "signUp": "Sign up",
+    "userName": "Username",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "conditionArgee": "By signing up, you agree to Photo's",
+    "conditionArgeeVN": "",
+    "termsOfServices": "Term of Services",
+    "privacyPolicy": "Privacy Policy",
+    "and": "and"
 }

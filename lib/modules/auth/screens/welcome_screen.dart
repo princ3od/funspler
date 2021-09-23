@@ -3,11 +3,13 @@ import 'package:funspler/general/constants/app_constant.dart';
 import 'package:funspler/general/constants/asset_constant.dart';
 import 'package:funspler/general/constants/string.dart';
 import 'package:funspler/general/core/routes/routes.dart';
+import 'package:funspler/general/theme/theme_provider.dart';
 import 'package:funspler/general/utils/responsive.dart';
 import 'package:funspler/general/widgets/black_button.dart';
 import 'package:funspler/general/widgets/white_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -16,11 +18,12 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var _screenWidth = MediaQuery.of(context).size.width;
     var _screenHeight = MediaQuery.of(context).size.height;
+    final _theme = Provider.of<ThemeProvider>(context);
     return Responsive(
       mobile: Stack(
         children: [
           Image.asset(
-            AssetConstant.welcome_bg,
+            AssetConstant.welcomeBg,
             width: _screenWidth,
             height: _screenHeight,
             fit: BoxFit.cover,
@@ -44,9 +47,7 @@ class WelcomeScreen extends StatelessWidget {
                         color: Colors.transparent,
                         child: Text(
                           AppString.appName,
-                          style: GoogleFonts.comfortaa(
-                            fontSize: AppConstant.kDouble_48,
-                          ),
+                          style: Theme.of(context).textTheme.headline1,
                         ),
                       ),
                     ],
@@ -62,7 +63,7 @@ class WelcomeScreen extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: WhiteButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context, Routes.welcome);
+                                  Navigator.pushNamed(context, Routes.login);
                                 },
                                 text: AppLocalizations.of(context)!
                                     .login
@@ -73,7 +74,9 @@ class WelcomeScreen extends StatelessWidget {
                           child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: BlackButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushNamed(context, Routes.register);
+                                },
                                 text: AppLocalizations.of(context)!
                                     .register
                                     .toUpperCase(),
@@ -91,7 +94,7 @@ class WelcomeScreen extends StatelessWidget {
       desktop: Stack(
         children: [
           Image.asset(
-            AssetConstant.welcome_bg,
+            AssetConstant.welcomeBg,
             width: _screenWidth,
             height: _screenHeight,
             fit: BoxFit.cover,

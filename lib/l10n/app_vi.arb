@@ -1,4 +1,13 @@
 {
     "login": "Đăng nhập",
-    "register": "Đăng ký"
+    "register": "Đăng ký",
+    "signUp": "Tạo tài khoản",
+    "userName": "Tài khoản",
+    "password": "Mật khẩu",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "conditionArgee": "Bằng cách đăng ký, bạn đồng ý với",
+    "conditionArgeeVN": "của Photo",
+    "termsOfServices": "Điều khoản Dịch vụ",
+    "privacyPolicy": "Chính sách Bảo mật",
+    "and": "và"
 }
