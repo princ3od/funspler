@@ -8,6 +8,7 @@ import 'package:funspler/general/theme/widget_theme.dart';
 import 'package:funspler/general/utils/responsive.dart';
 import 'package:funspler/general/widgets/black_button.dart';
 import 'package:funspler/general/widgets/white_button.dart';
+import 'package:funspler/modules/auth/screens/register_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -166,7 +167,7 @@ class WelcomeScreen extends StatelessWidget {
                       width: 250,
                       child: WhiteButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, Routes.login);
+                            Navigator.pushNamed(context, Routes.home);
                           },
                           text: AppLocalizations.of(context)!
                               .login

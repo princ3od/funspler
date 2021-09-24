@@ -13,7 +13,109 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Responsive(
-      desktop: Container(),
+      desktop: Scaffold(
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Center(
+              child: Container(
+                width: 300,
+                height: MediaQuery.of(context).size.height / 2,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 0.5,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(AppConstant.kDouble_16),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.register,
+                            style: Theme.of(context).textTheme.headline2,
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: AppConstant.kDouble_32),
+                      TextField(
+                        cursorColor: Colors.black,
+                        decoration: defaultTextfieldDecoration(
+                            hint: AppLocalizations.of(context)!.userName),
+                      ),
+                      SizedBox(height: AppConstant.kDouble_16),
+                      TextField(
+                        cursorColor: Colors.black,
+                        obscureText: true,
+                        enableSuggestions: false,
+                        autocorrect: false,
+                        decoration: defaultTextfieldDecoration(
+                            hint: AppLocalizations.of(context)!.password),
+                      ),
+                      SizedBox(height: AppConstant.kDouble_16),
+                      TextField(
+                        cursorColor: Colors.black,
+                        obscureText: true,
+                        enableSuggestions: false,
+                        autocorrect: false,
+                        decoration: defaultTextfieldDecoration(
+                            hint:
+                                AppLocalizations.of(context)!.confirmPassword),
+                      ),
+                      SizedBox(height: AppConstant.kDouble_16),
+                      SizedBox(
+                        width: double.infinity,
+                        child: BlackButton(
+                          text: AppLocalizations.of(context)!
+                              .signUp
+                              .toUpperCase(),
+                          onPressed: () {},
+                        ),
+                      ),
+                      SizedBox(height: AppConstant.kDouble_32),
+                      RichText(
+                          text: TextSpan(
+                              style: Theme.of(context).textTheme.bodyText2,
+                              children: [
+                            TextSpan(
+                                text:
+                                    '${AppLocalizations.of(context)!.conditionArgee} '),
+                            TextSpan(
+                              text:
+                                  AppLocalizations.of(context)!.termsOfServices,
+                              style: GoogleFonts.roboto(
+                                  decoration: TextDecoration.underline,
+                                  fontSize: AppConstant.kDouble_13,
+                                  color: Colors.black),
+                            ),
+                            TextSpan(
+                                text: ' ${AppLocalizations.of(context)!.and} '),
+                            TextSpan(
+                              text: AppLocalizations.of(context)!.privacyPolicy,
+                              style: GoogleFonts.roboto(
+                                  decoration: TextDecoration.underline,
+                                  fontSize: AppConstant.kDouble_13,
+                                  color: Colors.black),
+                            ),
+                            if (AppLocalizations.of(context)!.localeName ==
+                                'vi')
+                              TextSpan(
+                                  text:
+                                      ' ${AppLocalizations.of(context)!.conditionArgeeVN}'),
+                            TextSpan(text: '.'),
+                          ]))
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
       mobile: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,

@@ -13,7 +13,7 @@ class FullImageScreen extends StatelessWidget {
       body: Stack(
         children: [
           Scaffold(
-            backgroundColor: Colors.transparent,
+            backgroundColor: Colors.black,
             appBar: AppBar(
               title: Text('$tag'),
               backgroundColor: Colors.transparent,

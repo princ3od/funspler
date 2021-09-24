@@ -4,6 +4,7 @@ import 'package:funspler/general/constants/api_path.dart';
 import 'package:funspler/general/constants/app_constant.dart';
 import 'package:funspler/general/constants/asset_constant.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:funspler/general/utils/responsive.dart';
 import 'package:funspler/general/widgets/white_button.dart';
 import 'package:funspler/modules/home/bloc/home_bloc.dart';
 import 'package:funspler/modules/home/bloc/home_event.dart';
@@ -16,6 +17,7 @@ class HomeScreen extends StatelessWidget {
   final ScrollController _scrollController = ScrollController();
   Widget build(BuildContext context) {
     var _screenWidth = MediaQuery.of(context).size.width;
+    print(_screenWidth);
     return BlocProvider(
       create: (_) => HomeBloc(HomeStateIntial()),
       child: WillPopScope(
@@ -36,7 +38,14 @@ class HomeScreen extends StatelessWidget {
             controller: _scrollController,
             child: Container(
               child: Padding(
-                padding: const EdgeInsets.all(AppConstant.kDouble_16),
+                padding: (Responsive.isMobile(context))
+                    ? EdgeInsets.all(AppConstant.kDouble_16)
+                    : EdgeInsets.fromLTRB(
+                        (_screenWidth > 1200) ? _screenWidth / 3 : 50,
+                        AppConstant.kDouble_48,
+                        (_screenWidth > 1200) ? _screenWidth / 3 : 50,
+                        AppConstant.kDouble_48,
+                      ),
                 child: Column(
                   children: [
                     SizedBox(height: AppConstant.kDouble_48),
@@ -64,12 +73,20 @@ class HomeScreen extends StatelessWidget {
                             state is HomeStateFinished) {
                           return ImageDisplayer(
                             seed: state.mainImageSeed,
-                            height: _screenWidth - AppConstant.kDouble_16 * 2,
-                            width: _screenWidth - AppConstant.kDouble_16 * 2,
+                            height: (Responsive.isMobile(context) ||
+                                    (_screenWidth < 1200))
+                                ? _screenWidth - AppConstant.kDouble_16 * 2
+                                : _screenWidth.toInt() / 4,
+                            width: (Responsive.isMobile(context) ||
+                                    (_screenWidth < 1200))
+                                ? _screenWidth - AppConstant.kDouble_16 * 2
+                                : _screenWidth.toInt() / 4,
                             path: ApiPath.squareImage(
                                 seed: state.mainImageSeed,
-                                width: _screenWidth.toInt() -
-                                    AppConstant.kDouble_16.toInt() * 2),
+                                width: (Responsive.isMobile(context))
+                                    ? _screenWidth.toInt() -
+                                        AppConstant.kDouble_16.toInt() * 2
+                                    : _screenWidth.toInt() ~/ 4),
                             onTap: () {
                               if (state is HomeStateIntial) {
                                 return;
@@ -126,22 +143,39 @@ class HomeScreen extends StatelessWidget {
                                       padding: EdgeInsets.only(
                                           bottom: AppConstant.kDouble_10),
                                       child: ImageDisplayer(
-                                        height: _getHeightLeft(i),
-                                        width: _getWidth(_screenWidth),
+                                        height: _getHeightLeft(
+                                            i, (Responsive.isMobile(context))),
+                                        width: _getWidth(_screenWidth,
+                                            (Responsive.isMobile(context))),
                                         path: ApiPath.verticalImage(
                                             seed: state.imageSeeds[i * 2],
-                                            height: _getHeightLeft(i).toInt(),
-                                            width: _getWidth(_screenWidth)
+                                            height: _getHeightLeft(
+                                                    i,
+                                                    (Responsive.isMobile(
+                                                        context)))
+                                                .toInt(),
+                                            width: _getWidth(
+                                                    _screenWidth,
+                                                    (Responsive.isMobile(
+                                                        context)))
                                                 .toInt()),
                                         seed: state.imageSeeds[i * 2],
                                         onTap: () {
                                           String path = ApiPath.verticalImage(
                                             seed: state.imageSeeds[i * 2],
-                                            height:
-                                                (_getHeightRight(i).toInt() *
-                                                        2.5)
-                                                    .toInt(),
-                                            width: (_getWidth(_screenWidth) * 2)
+                                            height: (_getHeightRight(
+                                                            i,
+                                                            (Responsive
+                                                                .isMobile(
+                                                                    context)))
+                                                        .toInt() *
+                                                    2.5)
+                                                .toInt(),
+                                            width: (_getWidth(
+                                                        _screenWidth,
+                                                        (Responsive.isMobile(
+                                                            context))) *
+                                                    2)
                                                 .toInt(),
                                           );
                                           print(
@@ -173,22 +207,39 @@ class HomeScreen extends StatelessWidget {
                                       padding: EdgeInsets.only(
                                           bottom: AppConstant.kDouble_10),
                                       child: ImageDisplayer(
-                                        height: _getHeightRight(i),
-                                        width: _getWidth(_screenWidth),
+                                        height: _getHeightRight(
+                                            i, (Responsive.isMobile(context))),
+                                        width: _getWidth(_screenWidth,
+                                            (Responsive.isMobile(context))),
                                         path: ApiPath.verticalImage(
                                             seed: state.imageSeeds[i * 2 + 1],
-                                            height: _getHeightRight(i).toInt(),
-                                            width: _getWidth(_screenWidth)
+                                            height: _getHeightRight(
+                                                    i,
+                                                    (Responsive.isMobile(
+                                                        context)))
+                                                .toInt(),
+                                            width: _getWidth(
+                                                    _screenWidth,
+                                                    (Responsive.isMobile(
+                                                        context)))
                                                 .toInt()),
                                         seed: state.imageSeeds[i * 2 + 1],
                                         onTap: () {
                                           String path = ApiPath.verticalImage(
                                             seed: state.imageSeeds[i * 2 + 1],
-                                            height:
-                                                (_getHeightRight(i).toInt() *
-                                                        2.5)
-                                                    .toInt(),
-                                            width: (_getWidth(_screenWidth) * 2)
+                                            height: (_getHeightRight(
+                                                            i,
+                                                            (Responsive
+                                                                .isMobile(
+                                                                    context)))
+                                                        .toInt() *
+                                                    2.5)
+                                                .toInt(),
+                                            width: (_getWidth(
+                                                        _screenWidth,
+                                                        (Responsive.isMobile(
+                                                            context))) *
+                                                    2)
                                                 .toInt(),
                                           );
                                           print(
@@ -230,12 +281,23 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  double _getHeightRight(int i) =>
-      ((i % 5) % 2 == 1 || (i % 5) < 2) ? 310 : 220;
-
-  double _getWidth(double _screenWidth) {
-    return _screenWidth.toInt() ~/ 2 - AppConstant.kDouble_16;
+  double _getHeightRight(int i, bool isMobile) {
+    if (isMobile) return ((i % 5) % 2 == 1 || (i % 5) < 2) ? 310 : 220;
+    return ((i % 5) % 2 == 1 || (i % 5) < 2) ? 620 : 440;
   }
 
-  double _getHeightLeft(int i) => ((i % 5) % 2 == 0 && (i % 5) < 3) ? 220 : 310;
+  double _getWidth(double _screenWidth, bool isMobile) {
+    if (isMobile) {
+      return _screenWidth.toInt() ~/ 2 - AppConstant.kDouble_16;
+    } else {
+      var w = _screenWidth.toInt() ~/ 4 - AppConstant.kDouble_16;
+      if (w < 250) return 250;
+      return w;
+    }
+  }
+
+  double _getHeightLeft(int i, bool isMobile) {
+    if (isMobile) return ((i % 5) % 2 == 0 && (i % 5) < 3) ? 220 : 310;
+    return ((i % 5) % 2 == 0 && (i % 5) < 3) ? 440 : 620;
+  }
 }
