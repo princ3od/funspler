@@ -5,7 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 class WhiteButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-  const WhiteButton({Key? key, required this.text, required this.onPressed})
+  bool isLoading = false;
+  WhiteButton(
+      {Key? key,
+      required this.text,
+      required this.onPressed,
+      this.isLoading = false})
       : super(key: key);
 
   @override
@@ -26,6 +31,13 @@ class WhiteButton extends StatelessWidget {
               color: Colors.black, fontSize: 13, fontWeight: FontWeight.w900),
         ),
         onPressed: onPressed,
-        child: Text(text));
+        child: (!isLoading)
+            ? Text(text)
+            : SizedBox(
+                width: AppConstant.kDouble_15,
+                height: AppConstant.kDouble_15,
+                child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.black)),
+              ));
   }
 }

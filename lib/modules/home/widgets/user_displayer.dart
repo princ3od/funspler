@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:funspler/general/constants/api_path.dart';
 import 'package:funspler/general/constants/app_constant.dart';
@@ -15,8 +17,9 @@ class UserDisplayer extends StatelessWidget {
               width: 32,
               height: 32,
               placeholder: AssetConstant.shimmer,
-              image:
-                  ApiPath.squareImage(width: AppConstant.kDouble_32.toInt())),
+              image: ApiPath.squareImage(
+                  seed: Random().nextInt(10000),
+                  width: AppConstant.kDouble_32.toInt())),
         ),
         SizedBox(width: AppConstant.kDouble_8),
         Column(
