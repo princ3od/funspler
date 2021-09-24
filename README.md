@@ -1,16 +1,41 @@
-# funspler
+# Funspler
 
-A new Flutter project.
+A simple app to view random high quality images from unsplash.
 
-## Getting Started
+## Features
+- View random high quality images from unsplash
+- Localization (en, vi)
+- Support mobile, web, tablet from single codebase 
+## Tech Stack
 
-This project is a starting point for a Flutter application.
+Flutter (Dart)
 
-A few resources to get you started if this is your first Flutter project:
+API: https://picsum.photos/
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+State Management: BloC
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  
+## Installation 
+
+- Clone the project
+
+- Go to the project directory and run these commands:
+```bash
+  flutter pub get
+  
+  flutter run
+```
+- Enjoy!  
+
+## Authors
+
+- [Dương Bình Trọng](https://www.github.com/princ3od)
+
+## Screenshots
+<p float="left" align="center">
+  <img src="https://imgur.com/d97QzMp.png" alt="drawing" width="360" height="780"/>
+   <img src="https://imgur.com/Tk1QnHE.png" alt="drawing" width="360" height="780"/>
+  <img src="https://imgur.com/wSm9mtq.png" alt="drawing" width="360" height="780"/>
+  <img src="https://imgur.com/cLxhSYh.png" alt="drawing" width="360" height="780"/>
+
+<p/>
